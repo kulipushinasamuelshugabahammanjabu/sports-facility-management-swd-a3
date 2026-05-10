@@ -63,7 +63,13 @@ export default function AuthForm({ mode }) {
       body: JSON.stringify(values),
     });
 
-    const data = await response.json();
+    let data = {};
+
+    try {
+  data = await response.json();
+      }catch {
+    data = { error: "Server returned an invalid response." };
+    }
     setLoading(false);
 
     if (!response.ok) {
