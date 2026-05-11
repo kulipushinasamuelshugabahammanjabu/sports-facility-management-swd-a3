@@ -4,6 +4,8 @@ import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { getStoredUser } from "@/components/Navigation";
 
+import "./events.css";
+
 function formatDate(value) {
   return new Intl.DateTimeFormat("en-GB", {
     dateStyle: "medium",
@@ -74,7 +76,8 @@ export default function EventsBrowser() {
   }
 
   return (
-    <main className="page-shell">
+    <main className="events-page">
+      <div className="events-container">
       <section className="page-hero compact-hero">
         <div>
           <div className="section-kicker">Facilities, events, and tournaments</div>
@@ -157,6 +160,7 @@ export default function EventsBrowser() {
           <div className="empty-state">No matching events found.</div>
         )}
       </section>
+      </div>
     </main>
   );
 }

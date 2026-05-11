@@ -30,6 +30,20 @@ export default function Navigation() {
   const pathname = usePathname();
   const router = useRouter();
   const [user, setUser] = useState(null);
+  const [scrolled, setScrolled]=useState(false);
+
+
+
+useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    
+    window.addEventListener("scroll", handleScroll);
+    handleScroll(); // Check initial position
+    
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   useEffect(() => {
     function refreshUser() {
@@ -55,6 +69,7 @@ export default function Navigation() {
 
   const links = [
     { href: "/", label: "Home", roles: [] },
+     { href: "/about", label: "About", roles: [] },
     { href: "/events", label: "Events", roles: [] },
     { href: "/dashboard", label: "Dashboard", roles: ["attendee", "organiser", "admin"] },
     { href: "/organiser", label: "Organiser", roles: ["organiser", "admin"] },
@@ -65,7 +80,7 @@ export default function Navigation() {
     <header className="site-header">
       <nav className="site-nav" aria-label="Main navigation">
         <Link className="brand-mark" href="/">
-          <span className="brand-icon" aria-hidden="true">S</span>
+          
           <span>SportSpace</span>
         </Link>
 
@@ -94,7 +109,7 @@ export default function Navigation() {
               <Link className="btn btn-ghost" href="/login">
                 Login
               </Link>
-              <Link className="btn btn-primary" href="/register">
+              <Link className="btn btn-ghost" href="/register">
                 Register
               </Link>
             </>

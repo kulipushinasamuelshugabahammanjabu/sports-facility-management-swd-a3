@@ -84,6 +84,7 @@ export default function AuthForm({ mode }) {
   }
 
   return (
+    <div className="auth-page-wrapper">
     <section className="auth-shell">
       <div className="auth-panel">
         <div className="section-kicker">Secure access</div>
@@ -158,5 +159,6 @@ export default function AuthForm({ mode }) {
         </div>
       </aside>
     </section>
+    </div>
   );
 }
